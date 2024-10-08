@@ -5,10 +5,12 @@
              xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
              xmlns:input="clr-namespace:InputKit.Shared.Controls;assembly=InputKit.Maui"               
              xmlns:validation="clr-namespace:InputKit.Shared.Validations;assembly=InputKit.Maui"
+             xmlns:local="clr-namespace:PopupTextField"
              x:Class="PopupTextField.LoginPopup" 
-             CanBeDismissedByTappingOutsideOfPopup="False" Color="Transparent" >
+             x:DataType="local:LoginPopup" 
+             CanBeDismissedByTappingOutsideOfPopup="False" Color="Transparent">
     <Frame BackgroundColor="White" CornerRadius="16" Padding="24, 40, 24, 24" WidthRequest="488" HeightRequest="429">
-        <input:FormView >
+        <input:FormView SubmitCommand="{Binding SubmitCmd}">
             <Grid RowSpacing="24" RowDefinitions="auto,auto,auto,auto,auto" ColumnDefinitions="*"
               Padding="0" HorizontalOptions="Center" VerticalOptions="Center" >
 
@@ -24,14 +26,14 @@
                     Grid.Row="1"
                     HorizontalOptions="FillAndExpand" WidthRequest="430" HeightRequest="56" CornerRadius="4" 
                     AccentColor="{StaticResource Gray950}" TextColor="{StaticResource Gray54}" BorderColor="{StaticResource Gray54}" TitleColor="{StaticResource Gray54}"
-                    Title="Password">
+                    Title="Password" IsPassword="True">
                     <validation:RequiredValidation Message="Login Password is required" />
                     <material:TextField.Attachments>
-                        <material:TextFieldPasswordShowHideAttachment  />
+                        <material:TextFieldPasswordShowHideAttachment />
                     </material:TextField.Attachments>
                 </material:TextField>
 
-                <Button WidthRequest="440" HeightRequest="64" CornerRadius="32" Grid.Row="3" BackgroundColor="{StaticResource SolidRedVigilvent}"
+                <Button WidthRequest="440" HeightRequest="64" CornerRadius="32" Grid.Row="3" BackgroundColor="Red"
                     Text="Enter" TextTransform="Uppercase"
                     input:FormView.IsSubmitButton="True"/>
 
