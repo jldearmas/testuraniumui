@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+             xmlns:input="clr-namespace:InputKit.Shared.Controls;assembly=InputKit.Maui"               
+             xmlns:validation="clr-namespace:InputKit.Shared.Validations;assembly=InputKit.Maui"
+             x:Class="PopupTextField.LoginPopup" 
+             CanBeDismissedByTappingOutsideOfPopup="False" Color="Transparent" >
+    <Frame BackgroundColor="White" CornerRadius="16" Padding="24, 40, 24, 24" WidthRequest="488" HeightRequest="429">
+        <input:FormView >
+            <Grid RowSpacing="24" RowDefinitions="auto,auto,auto,auto,auto" ColumnDefinitions="*"
+              Padding="0" HorizontalOptions="Center" VerticalOptions="Center" >
+
+                <material:TextField 
+                    Grid.Row="0"
+                    HorizontalOptions="FillAndExpand" WidthRequest="430" HeightRequest="56" CornerRadius="4" 
+                    AccentColor="{StaticResource Gray950}" TextColor="{StaticResource Gray54}" BorderColor="{StaticResource Gray54}" TitleColor="{StaticResource Gray54}"
+                    Title="Username">
+                    <validation:RequiredValidation Message="Login Username is required" />
+                </material:TextField>
+
+                <material:TextField 
+                    Grid.Row="1"
+                    HorizontalOptions="FillAndExpand" WidthRequest="430" HeightRequest="56" CornerRadius="4" 
+                    AccentColor="{StaticResource Gray950}" TextColor="{StaticResource Gray54}" BorderColor="{StaticResource Gray54}" TitleColor="{StaticResource Gray54}"
+                    Title="Password">
+                    <validation:RequiredValidation Message="Login Password is required" />
+                    <material:TextField.Attachments>
+                        <material:TextFieldPasswordShowHideAttachment  />
+                    </material:TextField.Attachments>
+                </material:TextField>
+
+                <Button WidthRequest="440" HeightRequest="64" CornerRadius="32" Grid.Row="3" BackgroundColor="{StaticResource SolidRedVigilvent}"
+                    Text="Enter" TextTransform="Uppercase"
+                    input:FormView.IsSubmitButton="True"/>
+
+            </Grid>
+        </input:FormView>
+    </Frame>
+</toolkit:Popup>
